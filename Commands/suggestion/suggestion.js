@@ -15,9 +15,9 @@ module.exports = {
     async execute(interaction, client) {
 
         const user = interaction.member
-        const staffChannel = await interaction.guild.channels.cache.get('1110245221528244296') // Staff Channel ID
-        const staffRoleID = '1109155598580330698' // Staff Role ID
-        const suggestionChannel = await interaction.guild.channels.cache.get('1110241984188272790') // Suggestion Channel ID
+        const staffChannel = await interaction.guild.channels.cache.get('1136619346945396758') // Staff Channel ID
+        const staffRoleID = '1137382511278825552' // Staff Role ID
+        const suggestionChannel = await interaction.guild.channels.cache.get('1136619346945396758') // Suggestion Channel ID
         const suggestion = interaction.options.getString('suggestion') 
 
         const staffEmbed = new EmbedBuilder()

@@ -23,6 +23,7 @@
     "package-lock.json": "^1.0.0",
     "quick.db": "^9.1.7",
     "sequelize": "^6.32.1",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "tech-tip-cyber": "^1.2.8"
   }
 }
