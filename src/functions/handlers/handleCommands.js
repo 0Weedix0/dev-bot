@@ -18,31 +18,19 @@ module.exports = (client) => {
         }
         
         const clientID = '1125816918192947262'
-        const guildID = '1136618532055035924'
-        const rest = new REST({version: '10'}).setToken(token)
+        const rest = new REST({ version: '10' }).setToken(token)
 
-        // try {
-        //     console.log('Started refreshing application (/) commands.');
-        
-        //     rest.put(
-        //       Routes.applicationCommands(clientID),
-        //       { body: [] }, // Un tableau vide pour supprimer toutes les commandes
-        //     );
-        
-        //     console.log('Successfully removed all application (/) commands.');
-        //   } catch (error) {
-        //     console.error(error);
-        //   }
-        try{
-            console.log('reloading commands')
-            
+        try {
+            console.log(`Started Refreshing Commands`)
+
             await rest.put(
-                Routes.applicationCommands(clientID),
-                {body: client.commandArray}
+                // Routes.applicationCommands(clientID, guildID), // This Will Work For Specific Guild(Server)
+                Routes.applicationCommands(clientID), // This Will Work For Multi Guild(Server)
+                { body: client.commandArray }
             )
 
-            console.log('reload fait')
-        }catch(error){
+            console.log(`Successfully Refreshed Commands`)
+        } catch (error) {
             console.error(error)
         }
     }
