@@ -1,7 +1,7 @@
 // sqlite-db.js
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('../welcomer.sqlite') ;
+const db = new sqlite3.Database('./welcomer.sqlite') ;
 
 // Créer la table welcomes
 db.run(`

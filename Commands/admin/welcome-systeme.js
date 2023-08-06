@@ -1,7 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js')
-const getWelcome = require('../../models/welcome')
-const {sqlite} = require('../../node_modules/sqlite3');
-
+const sqlite = require('../../models/welcome.js')
 
 module.exports = {
     data: new SlashCommandBuilder()

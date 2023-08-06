@@ -6,8 +6,8 @@ module.exports = {
     name: 'guildMemberAdd',
 
     async execute(member, client) {
-        const data = await welcomeSchema.findOne({
-            Guild: member.guild.id
+        const data = await welcomeSchema.getWelcome({
+            guildID: member.guild.id
         })
         if (!data) return
 

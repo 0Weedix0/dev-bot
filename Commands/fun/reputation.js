@@ -33,7 +33,7 @@ module.exports = {
         const user = interaction.options.getMember('user')
         const message = interaction.options.getString('message') || 'N/A'
 
-        const data = await reputationSchema.findOne({
+        const data = await reputationSchema.getReputation({
             Guild: interaction.guild.id,
             User: user.id
         })
@@ -41,23 +41,23 @@ module.exports = {
         if (interaction.options.getSubcommand() === 'give') {
             if (user.id === interaction.member.id) return await interaction.reply({ content: `You Can't Add Reputation To Yourself`, ephemeral: true })
             if (!data) {
-                const data = await reputationSchema.create({
+                const data = await reputationSchema.setReputation({
                     Guild: interaction.guild.id,
                     User: user.id,
                     Reputation: 1
                 })
-                await data.save()
+                
                 await interaction.reply({ content: `Reputation Added To ${user.user.username} For ${message}` })
             }
             if (data) {
                 data.Reputation += 1
-                await data.save()
+                
                 await interaction.reply({ content: `Reputation Added To ${user.user.username} For ${message}` })
             }
         }
 
         if (interaction.options.getSubcommand() === 'view') {
-            const data = await reputationSchema.findOne({
+            const data = await reputationSchema.getReputation({
                 Guild: interaction.guild.id,
                 User: user.id
             })

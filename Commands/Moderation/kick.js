@@ -14,7 +14,7 @@ module.exports = {
             option
                 .setName('raison')
                 .setDescription('raison du kick')
-                .setRequired(true)
+                .setRequired(false)
         )
 
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)

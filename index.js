@@ -2,7 +2,7 @@ const { Client, Events, GatewayIntentBits, Collection } = require('discord.js')
 const { token } = require('./config.json')
 const fs = require('fs')
 
-const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages ] }) 
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.MessageContent] }) 
 client.commands = new Collection()
 client.commandArray = []
 
