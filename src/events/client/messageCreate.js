@@ -10,7 +10,7 @@ module.exports = {
     async execute(message) {
         if (message.author.bot) return // If Bot Messages It Wont't Reply
 
-        if (message.channel.id === '1097465886065053797') { // Channel ID For Using ChatGPT
+        if (message.channel.id === '1137725018940375222') { // Channel ID For Using ChatGPT
 
             const msg = message.content // Get The Content Of Message
 

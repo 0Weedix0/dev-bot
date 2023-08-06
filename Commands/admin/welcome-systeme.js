@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js')
-const welcomeSchema = require('../../models/welcome')
-const sqlite = require('../../node_modules/sqlite3');
+const getWelcome = require('../../models/welcome')
+const {sqlite} = require('../../node_modules/sqlite3');
+
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -34,10 +35,10 @@ module.exports = {
                 .setDescription('Remove Welcome System'))
         .setDMPermission(false),
     async execute(interaction, client) {
-
+        
         if (interaction.options.getSubcommand() === 'set') {
             const data = await sqlite.getWelcome(interaction.guild.id);
-
+            
             if (data) { // If Welcome System Already Enabled
                 const channel = interaction.options.getChannel('channel')
                 let message = interaction.options.getString('message')
@@ -48,7 +49,7 @@ module.exports = {
                 let rule = interaction.options.getChannel('rule')
                 if (rule) rule = rule.id
                 if (!rule) rule = null
-
+                
                 await sqlite.setWelcome(
                     interaction.guild.id,
                     channel.id,  
@@ -56,8 +57,8 @@ module.exports = {
                     role,
                     rule 
                   );
-                await data.save()
-
+                
+                
                 const welcomeSetupEmbed = new EmbedBuilder()
                     .setColor('Random')
                     .setTimestamp()
@@ -91,7 +92,7 @@ Welcome Message: ${message}
                     role,
                     rule
                   );
-                await data.save()
+            
 
                 const welcomeSetupEmbed = new EmbedBuilder()
                     .setColor('Random')
@@ -115,7 +116,6 @@ Welcome Message: ${message}
             if (!data) {
                 await interaction.reply({ content: `Welcome System Not Setup In **${interaction.guild.name}**`, ephemeral: true })
             } else {
-                await sqlite.db.run('DELETE FROM welcomes WHERE guildID = ?', [interaction.guild.id]);
                 await interaction.reply({ content: `Welcome System Disabled For **${interaction.guild.name}**` })
             }
         }

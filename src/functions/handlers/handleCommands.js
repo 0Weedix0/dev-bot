@@ -25,7 +25,7 @@ module.exports = (client) => {
             console.log(`Started Refreshing Commands`)
 
          rest.put(
-                Routes.applicationCommands(clientID), // This Will Work For Multi Guild(Server)
+                Routes.applicationCommands(clientID), 
                 { body: client.commandArray },
             )
             console.log(`Successfully Refreshed Commands`)
