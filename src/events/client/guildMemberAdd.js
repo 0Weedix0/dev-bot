@@ -1,13 +1,13 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js')
 const Canvas = require('canvas')
-const welcomeSchema = require('../../../models/welcome')
+const sqlite = require('../../../models/welcome')
 
 module.exports = {
     name: 'guildMemberAdd',
 
     async execute(member, client) {
-        const data = await welcomeSchema.getWelcome({
-            guildID: member.guild.id
+        const data = await sqlite.getWelcome({
+            Guild: member.guild.id
         })
         if (!data) return
 
